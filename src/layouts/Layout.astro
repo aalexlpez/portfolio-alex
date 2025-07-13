@@ -6,8 +6,6 @@ import "../styles/global.css";
 // const GA_ID = "G-KJ00EXZ5S6"; // Reemplaza con tu ID real
 const GA_ID = import.meta.env.GA_ID;
 const isProduction = import.meta.env.PROD;
-console.log("🖥️ SERVIDOR - isProduction:", isProduction);
-console.log("🖥️ SERVIDOR - GA_ID:", GA_ID);
 ---
 
 <!doctype html>
@@ -30,7 +28,6 @@ console.log("🖥️ SERVIDOR - GA_ID:", GA_ID);
 			<>
 				<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
 				<script is:inline define:vars={{ GA_ID }}>
-					console.log("🌐 CLIENTE - GA_ID recibido:", GA_ID);
 					window.dataLayer = window.dataLayer || [];
 					function gtag(){dataLayer.push(arguments);}
 					gtag('js', new Date());
@@ -48,13 +45,7 @@ console.log("🖥️ SERVIDOR - GA_ID:", GA_ID);
 	</body>
 </html>
 
-<!-- Vercel Analytics - Solo en producción -->
-{isProduction && (
-	<script type="module">
-		import { inject } from '@vercel/analytics';
-		inject();
-	</script>
-)}
+
 
 <style>
 	/* Reset para el layout padre */
