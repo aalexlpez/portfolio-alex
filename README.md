@@ -52,11 +52,11 @@ Todos los comandos se ejecutan desde la raíz del proyecto:
 
 | Comando | Acción |
 | :-- | :-- |
-| `npm install` | Instala las dependencias |
-| `npm run dev` | Inicia el servidor de desarrollo en `localhost:4321` |
-| `npm run build` | Construye el sitio para producción en `./dist/` |
-| `npm run preview` | Vista previa del sitio construido localmente |
-| `npm run astro` | Ejecuta comandos de Astro CLI |
+| `pnpm install` | Instala las dependencias |
+| `pnpm run dev` | Inicia el servidor de desarrollo en `localhost:4321` |
+| `pnpm run build` | Construye el sitio para producción en `./dist/` |
+| `pnpm run preview` | Vista previa del sitio construido localmente |
+| `pnpm run astro` | Ejecuta comandos de Astro CLI |
 
 ## 🎯 Inicio Rápido
 
@@ -68,12 +68,12 @@ Todos los comandos se ejecutan desde la raíz del proyecto:
 
 2. **Instala las dependencias**
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. **Inicia el servidor de desarrollo**
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 
 4. **Abre tu navegador**
@@ -93,7 +93,7 @@ El sitio se despliega automáticamente en Vercel cuando se hace push a la rama `
 
 ### Deploy manual:
 ```bash
-npm run build
+pnpm run build
 npx vercel --prod
 ```
 
