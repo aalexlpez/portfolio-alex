@@ -1,10 +1,1012 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	
+	<main class="relative z-10 pb-20 md:pb-0">
+		<!-- Hero Section -->
+		<section class="min-h-screen flex items-center justify-center px-6">
+			<div class="max-w-4xl mx-auto text-center">
+				<!-- Profile Image and Badge Container -->
+				<div class="flex flex-col items-center mb-6">
+					<img 
+						src="/images/photo-profile.jpeg" 
+						alt="Alexander López" 
+						class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white/20 shadow-2xl mb-4"
+					>
+					<!-- Status Badge - positioned below the image -->
+					<div class="inline-flex items-center gap-2 border border-green-500/50 rounded-full px-2 py-1 whitespace-nowrap border-vibrate">
+						<div class="w-1 h-1 bg-green-500 rounded-full animate-pulse"></div>
+						<span class="font-mono text-white/80 text-[12px] font-medium">Disponible para trabajar</span>
+					</div>
+				</div>
+				
+				<!-- Greeting -->
+				<h1 class="font-mono font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
+					Hola! Soy Alexander
+				</h1>
+				
+				<!-- Description -->
+				<div class="space-y-4 mb-8 max-w-3xl mx-auto">
+					<p class="font-mono text-lg md:text-xl text-white leading-relaxed">
+						<span class="text-cyan-400 font-bold">Ingeniero de Sistemas</span> 
+						<span class="text-white/80"> y </span>
+						<span class="text-violet-400 font-bold">Full Stack Developer</span>
+						<span class="text-white/80"> de Caracas, Venezuela 🇻🇪</span>
+					</p>
+					<p class="font-mono text-lg text-white/80 leading-relaxed">
+						<span class="text-white font-semibold">+7 años transformando ideas en soluciones digitales</span>, 
+						especializado en desarrollo frontend y aplicaciones web modernas.
+					</p>
+				</div>
+				
+				<!-- CTA Buttons -->
+				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+					<button 
+						id="copyEmailBtn"
+						class="inline-flex items-center gap-2 font-mono font-bold px-6 py-3 bg-white/10 text-white rounded-lg border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300 relative"
+					>
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+						</svg>
+						Contáctame
+						<!-- Tooltip -->
+						<div id="emailTooltip" class="absolute -top-12 left-1/2 -translate-x-1/2 bg-green-600 text-white text-sm px-3 py-1 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+							Correo copiado
+							<div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-green-600"></div>
+						</div>
+					</button>
+					<a 
+						href="https://www.linkedin.com/in/lopez-alexander/" 
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-flex items-center gap-2 font-mono font-bold px-6 py-3 bg-blue-600/20 text-blue-400 rounded-lg border border-blue-500/30 hover:bg-blue-600/30 hover:border-blue-500/50 transition-all duration-300"
+					>
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+						</svg>
+						LinkedIn
+					</a>
+				</div>
+				
+				<!-- Scroll Indicator -->
+				<div class="animate-bounce">
+					<svg class="w-6 h-6 mx-auto text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+					</svg>
+				</div>
+			</div>
+		</section>
+
+		<!-- About Section -->
+		<section id="about" class="py-20 px-4 md:py-36 md:px-6">
+			<div class="max-w-6xl mx-auto">
+				<div class="grid lg:grid-cols-2 gap-16 items-center">
+					<!-- Content -->
+					<div>
+						<h2 class="font-mono font-bold text-3xl md:text-4xl text-white mb-8">
+							Sobre mí
+						</h2>
+						<div class="space-y-6 font-mono text-white/80 text-lg leading-relaxed">
+							<p>
+								Comencé mi carrera en <strong class="text-white">redes y telecomunicaciones</strong>, 
+								trabajando con equipos Cisco, Huawei y otros sistemas de infraestructura. 
+								Con el tiempo, mi pasión me llevó hacia el <strong class="text-white">desarrollo de software</strong>.
+							</p>
+							<p>
+								Hoy me desempeño como <strong class="text-white">Full Stack Developer</strong> 
+								con énfasis en frontend, desarrollando aplicaciones web modernas y escalables.
+							</p>
+							<p>
+								He trabajado en proyectos para empresas como <strong class="text-white">Digitel</strong> y 
+								<strong class="text-white">Latin Pagos</strong>, así como en plataformas comerciales 
+								como Find-Persons.com e IQ-TestOnline.com.
+							</p>
+						</div>
+					</div>
+					
+					<!-- Tech Stack -->
+					<div class="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+						<h3 class="font-mono font-bold text-xl text-white mb-6">
+							Stack Tecnológico
+						</h3>
+						<div class="grid grid-cols-2 gap-6">
+							<div class="space-y-4">
+								<h4 class="font-mono font-semibold text-white/90 text-sm uppercase tracking-wider">
+									Frontend
+								</h4>
+								<ul class="font-mono text-white/70 space-y-2 text-sm">
+									<li>• <span class="text-cyan-400 font-semibold">React.js</span></li>
+									<li>• <span class="text-cyan-400 font-semibold">Next.js</span></li>
+									<li>• <span class="text-cyan-400 font-semibold">Astro</span></li>
+									<li>• <span class="text-cyan-400 font-semibold">TypeScript</span></li>
+									<li>• <span class="text-cyan-400 font-semibold">Redux</span></li>
+									<li>• <span class="text-cyan-400 font-semibold">jQuery</span></li>
+								</ul>
+							</div>
+							<div class="space-y-4">
+								<h4 class="font-mono font-semibold text-white/90 text-sm uppercase tracking-wider">
+									Backend
+								</h4>
+								<ul class="font-mono text-white/70 space-y-2 text-sm">
+									<li>• <span class="text-indigo-400 font-semibold">NestJS</span></li>
+									<li>• <span class="text-indigo-400 font-semibold">Laravel (PHP)</span></li>
+									<li>• <span class="text-indigo-400 font-semibold">Java</span></li>
+									<li>• <span class="text-indigo-400 font-semibold">.NET Core</span></li>
+									<li>• <span class="text-indigo-400 font-semibold">Spring Boot</span></li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="mt-6 pt-6 border-t border-white/10">
+							<h4 class="font-mono font-semibold text-white/90 text-sm uppercase tracking-wider mb-3">
+								Bases de datos
+							</h4>
+							<div class="grid grid-cols-2 gap-4">
+								<p class="font-mono text-white/70 text-sm">
+									<span class="text-violet-400 font-semibold">PostgreSQL</span> • <span class="text-violet-400 font-semibold">MySQL</span>
+								</p>
+								<p class="font-mono text-white/70 text-sm">
+									<span class="text-violet-400 font-semibold">SQL Server</span> • <span class="text-violet-400 font-semibold">Oracle</span>
+								</p>
+							</div>
+						</div>
+						
+						<div class="mt-6 pt-6 border-t border-white/10">
+							<h4 class="font-mono font-semibold text-white/90 text-sm uppercase tracking-wider mb-3">
+								DevOps & Herramientas
+							</h4>
+							<div class="grid grid-cols-2 gap-4">
+								<p class="font-mono text-white/70 text-sm">
+									<span class="text-emerald-400 font-semibold">Docker</span> • <span class="text-emerald-400 font-semibold">Kubernetes</span>
+								</p>
+								<p class="font-mono text-white/70 text-sm">
+									<span class="text-emerald-400 font-semibold">Git</span> • <span class="text-emerald-400 font-semibold">CI/CD</span>
+								</p>
+							</div>
+						</div>
+
+						<!-- <div class="mt-6 pt-6 border-t border-white/10">
+							<h4 class="font-mono font-semibold text-white/90 text-sm uppercase tracking-wider mb-3">
+								Integración & Reportes
+							</h4>
+							<div class="grid grid-cols-2 gap-4">
+								<p class="font-mono text-white/70 text-sm">
+									<span class="text-purple-400 font-semibold">MULE SOFT (ESB)</span>
+								</p>
+								<p class="font-mono text-white/70 text-sm">
+									<span class="text-blue-400 font-semibold">Microsoft SSRS</span>
+								</p>
+							</div>
+						</div> -->
+
+						<!-- <div class="mt-6 pt-6 border-t border-white/10">
+							<h4 class="font-mono font-semibold text-white/90 text-sm uppercase tracking-wider mb-3">
+								Redes & Telecomunicaciones
+							</h4>
+							<div class="space-y-2">
+								<p class="font-mono text-white/70 text-sm">
+									<span class="text-cyan-400 font-semibold">Cisco</span> • <span class="text-red-400 font-semibold">Huawei</span> • <span class="text-blue-400 font-semibold">Juniper</span> • <span class="text-green-400 font-semibold">Teldat</span>
+								</p>
+								<p class="font-mono text-white/70 text-sm">
+									<span class="text-violet-400 font-semibold">VLAN</span> • <span class="text-indigo-400 font-semibold">VOIP</span> • <span class="text-purple-400 font-semibold">WAN</span> • <span class="text-orange-400 font-semibold">Alcatel 5620 SAM</span>
+								</p>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Experience Timeline -->
+		<section id="experience" class="py-20 px-4 md:py-36 md:px-6 ">
+			<div class="max-w-4xl mx-auto">
+				<div class="flex items-center gap-4 mb-16">
+					<svg class="w-8 h-8 text-indigo-400" fill="currentColor" viewBox="0 0 24 24">
+						<path d="M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.11 0 2 .89 2 2v11c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2l.01-11c0-1.11.88-2 1.99-2h4V4c0-1.11.89-2 2-2h4c1.11 0 2 .89 2 2v2h4z"/>
+					</svg>
+					<h2 class="font-mono font-bold text-3xl md:text-4xl text-white">
+						Experiencia laboral
+					</h2>
+				</div>
+				
+				<!-- Timeline Container -->
+				<div class="relative">
+					<!-- Timeline Line -->
+					<div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-indigo-500 via-violet-500 to-cyan-500 opacity-60"></div>
+					
+					<!-- Experience Item 1 -->
+					<div class="relative flex items-start gap-8 mb-12">
+						<!-- Timeline Dot -->
+						<div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full border-4 border-black relative z-10 shadow-lg shadow-indigo-500/30"></div>
+						
+						<!-- Content -->
+						<div class="flex-1 pb-8">
+							<div class="mb-4">
+								<h3 class="font-mono font-bold text-transparent bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-xl mb-2">
+									Desarrollador Web Freelance
+								</h3>
+								<div class="font-mono font-bold text-white text-lg">
+									ADS Digital
+								</div>
+								<div class="font-mono text-white/60 text-sm">
+									Junio 2024 - Actualidad | Zaragoza, España
+								</div>
+							</div>
+							<p class="font-mono text-white/80 leading-relaxed mb-4">
+								Desarrollo de diversas aplicaciones web orientadas a la venta de servicios digitales, 
+								como <strong class="text-white">Find-Persons.com</strong>, <strong class="text-white">IQ-TestOnline.com</strong> y <strong class="text-white">AllRemoveBG.com</strong>. Implementación de 
+								interfaces modernas utilizando <strong class="text-white">Next.js</strong> y desarrollo de funcionalidades de backend con <strong class="text-white">NestJS</strong>.
+							</p>
+							<p class="font-mono text-white/80 leading-relaxed">
+								<strong class="text-white">Gestión completa del ciclo de vida</strong> de las aplicaciones, desde la <strong class="text-white">arquitectura inicial</strong> 
+								hasta el <strong class="text-white">despliegue y mantenimiento en producción</strong>, utilizando <strong class="text-white">Vercel</strong> como plataforma principal. 
+								Enfoque en la <strong class="text-white">optimización SEO</strong> y <strong class="text-white">rendimiento</strong>, con orientación a estrategias de captación 
+								de tráfico mediante <strong class="text-white">Google Ads</strong>.
+							</p>
+						</div>
+					</div>
+					
+					<!-- Experience Item 2 -->
+					<div class="relative flex items-start gap-8 mb-12">
+						<!-- Timeline Dot -->
+						<div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full border-4 border-black relative z-10 shadow-lg shadow-violet-500/30"></div>
+						
+						<!-- Content -->
+						<div class="flex-1 pb-8">
+							<div class="mb-4">
+								<h3 class="font-mono font-bold text-transparent bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-xl mb-2">
+									Desarrollador de Bases de Datos
+								</h3>
+								<div class="font-mono font-bold text-white text-lg">
+									Latin Pagos
+								</div>
+								<div class="font-mono text-white/60 text-sm">
+									Septiembre 2023 - Abril 2025 | Caracas, Venezuela
+								</div>
+							</div>
+							<p class="font-mono text-white/80 leading-relaxed mb-4">
+								Responsable de la <strong class="text-white">gestión y mantenimiento de las bases de datos</strong> asociadas a una 
+								pasarela de pagos desarrollada sobre <strong class="text-white">MULE SOFT (ESB)</strong>. <strong class="text-white">Generación de reportes 
+								complejos</strong> utilizando <strong class="text-white">Microsoft Visual Studio</strong> y <strong class="text-white">Reporting Services (SSRS)</strong>.
+							</p>
+							<p class="font-mono text-white/80 leading-relaxed">
+								<strong class="text-white">Optimización de consultas SQL</strong> en entornos <strong class="text-white">SQL Server</strong> y <strong class="text-white">MySQL</strong>, asegurando una 
+								<strong class="text-white">rápida respuesta y disponibilidad</strong> de la información. Participación activa en la 
+								<strong class="text-white">mejora continua de procesos</strong> de acceso a datos y <strong class="text-white">soporte a requerimientos del equipo de negocio</strong>.
+							</p>
+						</div>
+					</div>
+
+					<!-- Experience Item 3 -->
+					<div class="relative flex items-start gap-8 mb-12">
+						<!-- Timeline Dot -->
+						<div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full border-4 border-black relative z-10 shadow-lg shadow-purple-500/30"></div>
+						
+						<!-- Content -->
+						<div class="flex-1 pb-8">
+							<div class="mb-4">
+								<h3 class="font-mono font-bold text-transparent bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-xl mb-2">
+									Desarrollador Web
+								</h3>
+								<div class="font-mono font-bold text-white text-lg">
+									Corporación KMG C.A.
+								</div>
+								<div class="font-mono text-white/60 text-sm">
+									Octubre 2019 - Septiembre 2023 | Caracas, Venezuela
+								</div>
+							</div>
+							<p class="font-mono text-white/80 leading-relaxed mb-4">
+								Desarrollo del <strong class="text-white">CORE de aplicaciones</strong> para el <strong class="text-white">CRM de Digitel</strong>. <strong class="text-white">Liderazgo en el desarrollo</strong> 
+								de la aplicación de <strong class="text-white">Gestión de Tickets</strong>, participando en <strong class="text-white">análisis, desarrollo, pruebas e implementación</strong>.
+							</p>
+							<p class="font-mono text-white/80 leading-relaxed">
+								Desarrollo frontend con <strong class="text-white">React</strong>, <strong class="text-white">Redux</strong>, <strong class="text-white">jQuery</strong> y <strong class="text-white">TypeScript</strong>, y backend con <strong class="text-white">Laravel (PHP)</strong>. 
+								Participación en proyectos paralelos con <strong class="text-white">Java</strong>, <strong class="text-white">.NET Core</strong>, y <strong class="text-white">pruebas de concepto</strong> con 
+								<strong class="text-white">Docker</strong>, <strong class="text-white">Kubernetes</strong> y <strong class="text-white">administración de servidores</strong>.
+							</p>
+						</div>
+					</div>
+
+					<!-- Experience Item 4 -->
+					<div class="relative flex items-start gap-8">
+						<!-- Timeline Dot -->
+						<div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full border-4 border-black relative z-10 shadow-lg shadow-cyan-500/30"></div>
+						
+						<!-- Content -->
+						<div class="flex-1">
+							<div class="mb-4">
+								<h3 class="font-mono font-bold text-transparent bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-xl mb-2">
+									2nd Level Specialist
+								</h3>
+								<div class="font-mono font-bold text-white text-lg">
+									Ericsson
+								</div>
+								<div class="font-mono text-white/60 text-sm">
+									Octubre 2017 - Octubre 2019 | Caracas, Venezuela
+								</div>
+							</div>
+							<p class="font-mono text-white/80 leading-relaxed mb-4">
+								<strong class="text-white">Gestión de fallas</strong> en la red de telecomunicaciones de <strong class="text-white">Telefónica (Movistar)</strong>. <strong class="text-white">Soporte a servicios 
+								empresariales WAN</strong> a nivel nacional. <strong class="text-white">Monitoreo de servicios</strong> <strong class="text-white">LAN to LAN</strong>, <strong class="text-white">VLAN</strong>, <strong class="text-white">Internet 
+								dedicado</strong>, <strong class="text-white">CPA</strong>, <strong class="text-white">VOIP</strong>.
+							</p>
+							<p class="font-mono text-white/80 leading-relaxed">
+								Uso de herramientas como <strong class="text-white">Alcatel 5620 SAM</strong>, <strong class="text-white">Huawei U2000</strong>, <strong class="text-white">ECI</strong>. <strong class="text-white">Configuración y 
+								resolución de incidencias</strong> en equipos de <strong class="text-white">Cisco</strong>, <strong class="text-white">Juniper</strong>, <strong class="text-white">Teldat</strong> y <strong class="text-white">Huawei</strong>. 
+								<strong class="text-white">Coordinación con equipos técnicos</strong> para garantizar <strong class="text-white">continuidad operativa</strong>.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Values Section -->
+		<!-- <section class="py-20 px-4 md:py-36 md:px-6">
+			<div class="max-w-4xl mx-auto text-center">
+				<h2 class="font-mono font-bold text-3xl md:text-4xl text-white mb-8">
+					Mi Enfoque
+				</h2>
+				<p class="font-mono text-xl text-white/80 mb-12 leading-relaxed">
+					Me gusta trabajar en equipo, adaptarme rápido y siempre estoy buscando aprender algo nuevo.
+				</p>
+				
+				<div class="grid md:grid-cols-3 gap-8">
+					<div class="text-center">
+						<div class="w-16 h-16 bg-indigo-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+							<svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+							</svg>
+						</div>
+						<h3 class="font-mono font-bold text-white text-lg mb-2">Trabajo en Equipo</h3>
+						<p class="font-mono text-white/60 text-sm">Colaboración efectiva y comunicación clara</p>
+					</div>
+					
+					<div class="text-center">
+						<div class="w-16 h-16 bg-violet-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+							<svg class="w-8 h-8 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+							</svg>
+						</div>
+						<h3 class="font-mono font-bold text-white text-lg mb-2">Adaptabilidad</h3>
+						<p class="font-mono text-white/60 text-sm">Rápida adaptación a nuevos retos</p>
+					</div>
+					
+					<div class="text-center">
+						<div class="w-16 h-16 bg-cyan-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+							<svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+							</svg>
+						</div>
+						<h3 class="font-mono font-bold text-white text-lg mb-2">Aprendizaje</h3>
+						<p class="font-mono text-white/60 text-sm">Constante evolución y crecimiento</p>
+					</div>
+				</div>
+			</div>
+		</section> -->
+
+		<!-- Projects Section -->
+		<section id="projects" class="py-20 px-4 md:py-36 md:px-6">
+			<div class="max-w-4xl mx-auto">
+				<div class="flex items-center gap-4 mb-16">
+					<svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+					</svg>
+					<h2 class="font-mono font-bold text-3xl md:text-4xl text-white">
+						Proyectos
+					</h2>
+				</div>
+
+				<div class="grid gap-8 md:gap-12">
+					<!-- Project 1: SVGL -->
+					<div class="group">
+						<div class="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden hover:border-white/20 transition-all duration-500 hover:bg-white/[0.08]">
+							<div class="md:flex">
+								<!-- Project Image -->
+								<div class="md:w-1/2 relative overflow-hidden">
+									<div class="aspect-video md:aspect-square bg-gradient-to-br from-cyan-900/50 via-indigo-900/50 to-violet-900/50 flex items-center justify-center relative">
+										<!-- Mockup Browser Window -->
+										<div class="w-[90%] h-[85%] bg-gray-900 rounded-lg border border-white/10 overflow-hidden shadow-2xl">
+											<!-- Browser Header -->
+											<div class="h-8 bg-gray-800 flex items-center gap-2 px-4 border-b border-white/10">
+												<div class="flex gap-1.5">
+													<div class="w-3 h-3 bg-red-500 rounded-full"></div>
+													<div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+													<div class="w-3 h-3 bg-green-500 rounded-full"></div>
+												</div>
+												<div class="flex-1 text-center">
+													<div class="bg-gray-700 rounded px-3 py-1 text-xs text-white/60 inline-block">
+														https://www.find-persons.com
+													</div>
+												</div>
+											</div>
+											<!-- Browser Content -->
+											<div class="h-full overflow-hidden">
+												<img 
+													src="/images/www.find-persons.com.png" 
+													alt="Find-Persons.com screenshot" 
+													class="w-full h-full object-cover object-top"
+												>
+											</div>
+										</div>
+										<!-- Floating effect -->
+										<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+									</div>
+								</div>
+
+								<!-- Project Content -->
+								<div class="md:w-1/2 p-8">
+									<div class="h-full flex flex-col">
+										<div>
+											<h3 class="font-mono font-bold text-2xl text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text mb-4">
+												Find-Persons.com - Buscador de personas
+											</h3>
+											
+											<div class="flex gap-3 mb-6">
+												<span class="px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-xs font-mono text-cyan-300">
+													React/Next.js
+												</span>
+												<span class="px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-xs font-mono text-blue-300">
+													NestJS
+												</span>
+												<span class="px-3 py-1 bg-indigo-500/20 border border-indigo-500/30 rounded-full text-xs font-mono text-indigo-300">
+													PostgreSQL
+												</span>
+											</div>
+
+											<p class="font-mono text-white/80 leading-relaxed mb-6">
+												Plataforma comercial de búsqueda de personas que genera 
+												<strong class="text-white">miles de visitas diarias</strong>. 
+												Monetizada através de campañas publicitarias estratégicas 
+												y optimizada para la captación y conversión de leads.
+											</p>
+										</div>
+
+										<div class="flex gap-4 mt-auto">
+											<a href="https://www.find-persons.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg font-mono text-sm text-white hover:from-indigo-400 hover:to-purple-400 transition-all duration-300 group">
+												<svg class="w-4 h-4 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+												</svg>
+												Visitar
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Project 2: AllRemoveBG -->
+					<div class="group">
+						<div class="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden hover:border-white/20 transition-all duration-500 hover:bg-white/[0.08]">
+							<div class="md:flex">
+								<!-- Project Image -->
+								<div class="md:w-1/2 relative overflow-hidden">
+									<div class="aspect-video md:aspect-square bg-gradient-to-br from-indigo-900/50 via-purple-900/50 to-pink-900/50 flex items-center justify-center relative">
+										<!-- Mockup Browser Window -->
+										<div class="w-[90%] h-[85%] bg-gray-900 rounded-lg border border-white/10 overflow-hidden shadow-2xl">
+											<!-- Browser Header -->
+											<div class="h-8 bg-gray-800 flex items-center gap-2 px-4 border-b border-white/10">
+												<div class="flex gap-1.5">
+													<div class="w-3 h-3 bg-red-500 rounded-full"></div>
+													<div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+													<div class="w-3 h-3 bg-green-500 rounded-full"></div>
+												</div>
+												<div class="flex-1 text-center">
+													<div class="bg-gray-700 rounded px-3 py-1 text-xs text-white/60 inline-block">
+														https://www.allremovebg.com
+													</div>
+												</div>
+											</div>
+											<!-- Browser Content -->
+											<div class="h-full overflow-hidden">
+												<img 
+													src="/images/www.allremovebg.com.png" 
+													alt="Find-Persons.com screenshot" 
+													class="w-full h-full object-cover object-top"
+												>
+											</div>
+										</div>
+										<!-- Floating effect -->
+										<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+									</div>
+								</div>
+
+								<!-- Project Content -->
+								<div class="md:w-1/2 p-8">
+									<div class="h-full flex flex-col">
+										<div>
+											<h3 class="font-mono font-bold text-2xl text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text mb-4">
+												AllRemoveBG.com - Removedor de fondos
+											</h3>
+											
+											<div class="flex gap-3 mb-6">
+												<span class="px-3 py-1 bg-indigo-500/20 border border-indigo-500/30 rounded-full text-xs font-mono text-indigo-300">
+													React/Next.js
+												</span>
+												<span class="px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-xs font-mono text-purple-300">
+													NestJS
+												</span>
+												<span class="px-3 py-1 bg-pink-500/20 border border-pink-500/30 rounded-full text-xs font-mono text-pink-300">
+													PostgreSQL
+												</span>
+											</div>
+
+											<p class="font-mono text-white/80 leading-relaxed mb-6">
+												Mi portfolio personal desarrollado con Astro, donde muestro 
+												mi experiencia, proyectos y habilidades. Diseño moderno 
+												con efectos glassmorphism y animaciones suaves.
+											</p>
+										</div>
+
+										<div class="flex gap-4 mt-auto">
+											<!-- <a href="#" class="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg font-mono text-sm text-white hover:bg-white/20 transition-all duration-300 group">
+												<svg class="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+												</svg>
+												Code
+											</a> -->
+											<a href="https://www.allremovebg.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg font-mono text-sm text-white hover:from-indigo-400 hover:to-purple-400 transition-all duration-300 group">
+												<svg class="w-4 h-4 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+												</svg>
+												Visitar
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Enterprise Projects Section -->
+					<div class="mt-20">
+						<div class="flex items-center gap-4 mb-12">
+							<svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-2M7 21H5m2 0h2m6-11V7m-3 4V7m-3 4V7"/>
+							</svg>
+							<h3 class="font-mono font-bold text-2xl md:text-3xl text-white">
+								Proyectos Empresariales
+							</h3>
+						</div>
+						
+						<div class="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8">
+							<div class="text-center mb-8">
+								<div class="w-16 h-16 bg-gradient-to-r from-violet-500/20 to-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-violet-500/30">
+									<svg class="w-8 h-8 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+									</svg>
+								</div>
+								<h4 class="font-mono font-bold text-xl text-white mb-2">
+									Proyectos Confidenciales
+								</h4>
+								<p class="font-mono text-white/70 text-sm">
+									Trabajos realizados para empresas bajo acuerdos de confidencialidad
+								</p>
+							</div>
+
+							<div class="grid md:grid-cols-2 gap-8">
+								<!-- Enterprise Project 1 - CRM KMG/Digitel -->
+								<div class="space-y-4">
+									<div class="flex items-start gap-3">
+										<div class="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+										<div>
+											<h5 class="font-mono font-bold text-lg text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text mb-2">
+												CRM de Digitel - KMG/Digitel
+											</h5>
+											<p class="font-mono text-white/80 text-sm leading-relaxed mb-3">
+												Desarrollo del CORE de aplicaciones para el CRM de la operadora 
+												de telecomunicaciones Digitel. Sistema integral para gestión 
+												de clientes, ventas y seguimiento comercial a nivel nacional.
+											</p>
+											<div class="flex flex-wrap gap-2">
+												<span class="px-2 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded text-xs font-mono text-cyan-300">
+													React.js
+												</span>
+												<span class="px-2 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded text-xs font-mono text-cyan-300">
+													Redux
+												</span>
+												<span class="px-2 py-1 bg-violet-500/20 border border-violet-500/30 rounded text-xs font-mono text-violet-300">
+													Oracle
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Enterprise Project 2 - Gestor de Tickets -->
+								<div class="space-y-4">
+									<div class="flex items-start gap-3">
+										<div class="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
+										<div>
+											<h5 class="font-mono font-bold text-lg text-transparent bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text mb-2">
+												Gestor de Tickets - KMG/Digitel
+											</h5>
+											<p class="font-mono text-white/80 text-sm leading-relaxed mb-3">
+												Plataforma líder para gestión y seguimiento de incidencias técnicas 
+												de soporte al cliente de Digitel. Sistema de escalamiento, resolución 
+												de tickets y SLA automatizado con análisis completo del ciclo de vida.
+											</p>
+											<div class="flex flex-wrap gap-2">
+												<span class="px-2 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded text-xs font-mono text-cyan-300">
+													React.js
+												</span>
+												<span class="px-2 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded text-xs font-mono text-cyan-300">
+													TypeScript
+												</span>
+												<span class="px-2 py-1 bg-indigo-500/20 border border-indigo-500/30 rounded text-xs font-mono text-indigo-300">
+													Java
+												</span>
+												<span class="px-2 py-1 bg-violet-500/20 border border-violet-500/30 rounded text-xs font-mono text-violet-300">
+													Oracle
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Enterprise Project 3 - Portal Web -->
+								<div class="space-y-4">
+									<div class="flex items-start gap-3">
+										<div class="w-2 h-2 bg-violet-400 rounded-full mt-2 flex-shrink-0"></div>
+										<div>
+											<h5 class="font-mono font-bold text-lg text-transparent bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text mb-2">
+												Proyectos Paralelos - KMG/Digitel
+											</h5>
+											<p class="font-mono text-white/80 text-sm leading-relaxed mb-3">
+												Participación en proyectos paralelos con tecnologías diversas 
+												incluyendo pruebas de concepto con containerización, orquestación 
+												y administración de servidores para la infraestructura empresarial.
+											</p>
+											<div class="flex flex-wrap gap-2">
+												<span class="px-2 py-1 bg-indigo-500/20 border border-indigo-500/30 rounded text-xs font-mono text-indigo-300">
+													.NET Core
+												</span>
+                                                <span class="px-2 py-1 bg-indigo-500/20 border border-indigo-500/30 rounded text-xs font-mono text-indigo-300">
+                                                    Laravel (PHP)
+                                                </span>
+												<span class="px-2 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded text-xs font-mono text-emerald-300">
+													Docker
+												</span>
+												<span class="px-2 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded text-xs font-mono text-emerald-300">
+													Kubernetes
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Enterprise Project 4 - Pasarela de Pagos -->
+								<div class="space-y-4">
+									<div class="flex items-start gap-3">
+										<div class="w-2 h-2 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></div>
+										<div>
+											<h5 class="font-mono font-bold text-lg text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text mb-2">
+												Pasarela de Pagos - Latin Pagos
+											</h5>
+											<p class="font-mono text-white/80 text-sm leading-relaxed mb-3">
+												Gestión y mantenimiento de bases de datos para pasarela de pagos 
+												desarrollada sobre MULE SOFT (ESB). Generación de reportes complejos 
+												y optimización de consultas SQL para alta disponibilidad.
+											</p>
+											<div class="flex flex-wrap gap-2">
+												<span class="px-2 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded text-xs font-mono text-emerald-300">
+													MULE SOFT (ESB)
+												</span>
+												<span class="px-2 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded text-xs font-mono text-emerald-300">
+													Microsoft SSRS
+												</span>
+												<span class="px-2 py-1 bg-violet-500/20 border border-violet-500/30 rounded text-xs font-mono text-violet-300">
+													SQL Server
+												</span>
+												<span class="px-2 py-1 bg-violet-500/20 border border-violet-500/30 rounded text-xs font-mono text-violet-300">
+													MySQL
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="mt-8 pt-6 border-t border-white/10 text-center">
+								<p class="font-mono text-white/60 text-sm">
+									<span class="text-white/80 font-semibold">Proyectos desarrollados</span> para 
+									KMG/Digitel y Latin Pagos bajo acuerdos de confidencialidad en sectores de 
+									telecomunicaciones y pagos digitales.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact Section -->
+		<section id="contact" class="py-20 px-4 md:py-36 md:px-6">
+			<div class="max-w-4xl mx-auto">
+				<!-- Header -->
+				<div class="text-center mb-12">
+					<h2 class="font-mono font-bold text-3xl md:text-4xl text-white mb-6">
+						¿Trabajamos juntos?
+					</h2>
+					<p class="font-mono text-lg text-white/70 mb-8">
+						Estoy siempre abierto a nuevos proyectos y oportunidades de colaboración.
+					</p>
+				</div>
+
+				<!-- Contact Info Grid -->
+				<div class="grid md:grid-cols-2 gap-8 mb-12">
+					<!-- Contact Details -->
+					<div class="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+						<h3 class="font-mono font-bold text-xl text-white mb-6 flex items-center gap-3">
+							<svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+							</svg>
+							Información de Contacto
+						</h3>
+						
+						<div class="space-y-6">
+							<!-- Email -->
+							<div class="flex items-center gap-4">
+								<div class="w-12 h-12 bg-indigo-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-indigo-500/30">
+									<svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+									</svg>
+								</div>
+								<div>
+									<p class="font-mono text-white/60 text-sm">Correo electrónico</p>
+									<a href="mailto:aalexlpez@gmail.com" class="font-mono text-white font-semibold hover:text-cyan-400 transition-colors duration-300">
+										aalexlpez@gmail.com
+									</a>
+								</div>
+							</div>
+
+							<!-- Phone -->
+							<div class="flex items-center gap-4">
+								<div class="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-cyan-500/30">
+									<svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+									</svg>
+								</div>
+								<div>
+									<p class="font-mono text-white/60 text-sm">Teléfono</p>
+									<a href="tel:+34640921137" class="font-mono text-white font-semibold hover:text-cyan-400 transition-colors duration-300">
+										+34 640921137
+									</a>
+								</div>
+							</div>
+
+							<!-- Location -->
+							<div class="flex items-center gap-4">
+								<div class="w-12 h-12 bg-violet-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-violet-500/30">
+									<svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+									</svg>
+								</div>
+								<div>
+									<p class="font-mono text-white/60 text-sm">Ubicación</p>
+									<p class="font-mono text-white font-semibold">Zaragoza, España</p>
+								</div>
+							</div>
+
+							<!-- Nationality -->
+							<div class="flex items-center gap-4">
+								<div class="w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-emerald-500/30">
+									<svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"></path>
+									</svg>
+								</div>
+								<div>
+									<p class="font-mono text-white/60 text-sm">Nacionalidad</p>
+									<p class="font-mono text-white font-semibold">Venezolano</p>
+								</div>
+							</div>
+
+							<!-- LinkedIn -->
+							<div class="flex items-center gap-4">
+								<div class="w-12 h-12 bg-indigo-600/20 rounded-full flex items-center justify-center flex-shrink-0 border border-indigo-600/30">
+									<svg class="w-6 h-6 text-indigo-400" fill="currentColor" viewBox="0 0 24 24">
+										<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+									</svg>
+								</div>
+								<div>
+									<p class="font-mono text-white/60 text-sm">LinkedIn</p>
+									<a href="https://www.linkedin.com/in/lopez-alexander/" target="_blank" rel="noopener noreferrer" class="font-mono text-white font-semibold hover:text-cyan-400 transition-colors duration-300">
+										linkedin.com/in/lopez-alexander
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Quick Actions -->
+					<div class="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+						<h3 class="font-mono font-bold text-xl text-white mb-6 flex items-center gap-3">
+							<svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+							</svg>
+							Acciones Rápidas
+						</h3>
+						
+						<div class="space-y-4">
+							<!-- Email Button -->
+							<button 
+								id="copyEmailContactBtn"
+								class="w-full flex items-center gap-3 font-mono font-semibold px-6 py-4 bg-gradient-to-r from-indigo-500/20 to-indigo-600/20 text-white rounded-lg border border-indigo-500/30 hover:from-indigo-500/30 hover:to-indigo-600/30 hover:border-indigo-500/50 transition-all duration-300 relative group"
+							>
+								<svg class="w-5 h-5 text-indigo-400 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+								</svg>
+								Copiar Email
+								<!-- Tooltip -->
+								<div id="emailContactTooltip" class="absolute -top-12 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-sm px-3 py-1 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+									Email copiado
+									<div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-emerald-600"></div>
+								</div>
+							</button>
+
+							<!-- WhatsApp Button -->
+							<a 
+								href="https://wa.me/34640921137" 
+								target="_blank"
+								rel="noopener noreferrer"
+								class="w-full flex items-center gap-3 font-mono font-semibold px-6 py-4 bg-gradient-to-r from-cyan-500/20 to-cyan-600/20 text-white rounded-lg border border-cyan-500/30 hover:from-cyan-500/30 hover:to-cyan-600/30 hover:border-cyan-500/50 transition-all duration-300 group"
+							>
+								<svg class="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+									<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+								</svg>
+								Escribir por WhatsApp
+							</a>
+
+							<!-- LinkedIn Button -->
+							<a 
+								href="https://www.linkedin.com/in/lopez-alexander/" 
+								target="_blank"
+								rel="noopener noreferrer"
+								class="w-full flex items-center gap-3 font-mono font-semibold px-6 py-4 bg-gradient-to-r from-violet-500/20 to-violet-600/20 text-white rounded-lg border border-violet-500/30 hover:from-violet-500/30 hover:to-violet-600/30 hover:border-violet-500/50 transition-all duration-300 group"
+							>
+								<svg class="w-5 h-5 text-violet-400 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+									<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+								</svg>
+								Conectar en LinkedIn
+							</a>
+
+							<!-- Download CV Button -->
+							<button 
+								id="downloadCvBtn"
+								class="w-full flex items-center gap-3 font-mono font-semibold px-6 py-4 bg-gradient-to-r from-emerald-500/20 to-emerald-600/20 text-white rounded-lg border border-emerald-500/30 hover:from-emerald-500/30 hover:to-emerald-600/30 hover:border-emerald-500/50 transition-all duration-300 group cursor-pointer"
+							>
+								<svg class="w-5 h-5 text-emerald-400 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+								</svg>
+								<span class="flex flex-col items-start">
+									<span>Descargar CV</span>
+									<span class="text-xs text-white/60">y ver online</span>
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- CTA Buttons -->
+				<!-- <div class="flex flex-col sm:flex-row gap-4 justify-center">
+					<a 
+						href="mailto:aalexlpez@gmail.com" 
+						class="font-mono font-bold px-8 py-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+					>
+						Enviar Email
+					</a>
+					<a 
+						href="#projects" 
+						class="font-mono font-bold px-8 py-4 bg-white/10 text-white rounded-lg border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
+					>
+						Ver Proyectos
+					</a>
+				</div> -->
+			</div>
+		</section>
+	</main>
 </Layout>
+
+<script>
+	// Copy email functionality
+	document.addEventListener('DOMContentLoaded', function() {
+		const copyEmailBtn = document.getElementById('copyEmailContactBtn');
+		const emailTooltip = document.getElementById('emailContactTooltip');
+		
+		if (copyEmailBtn && emailTooltip) {
+			copyEmailBtn.addEventListener('click', async function() {
+				const email = 'aalexlpez@gmail.com';
+				
+				try {
+					await navigator.clipboard.writeText(email);
+					
+					// Show tooltip
+					emailTooltip.classList.remove('opacity-0');
+					emailTooltip.classList.add('opacity-100');
+					
+					// Hide tooltip after 2 seconds
+					setTimeout(() => {
+						emailTooltip.classList.remove('opacity-100');
+						emailTooltip.classList.add('opacity-0');
+					}, 2000);
+				} catch (err) {
+					console.error('Error copying email: ', err);
+				}
+			});
+		}
+
+		// Download CV and open online functionality
+		const downloadCvBtn = document.getElementById('downloadCvBtn');
+		
+		if (downloadCvBtn) {
+			downloadCvBtn.addEventListener('click', function() {
+				// URLs del CV
+				const downloadUrl = '/cv/Alexander-López-CV.pdf';
+				const onlineUrl = 'https://flowcv.com/resume/e4vdcsqsnoow'; // Cambia por tu enlace real
+				
+				// Crear enlace temporal para descarga
+				const downloadLink = document.createElement('a');
+				downloadLink.href = downloadUrl;
+				downloadLink.download = 'CV-Alexander-Lopez.pdf';
+				downloadLink.style.display = 'none';
+				document.body.appendChild(downloadLink);
+				
+				// Ejecutar descarga
+				downloadLink.click();
+				
+				// Abrir CV online en nueva pestaña
+				window.open(onlineUrl, '_blank', 'noopener,noreferrer');
+				
+				// Limpiar el enlace temporal
+				document.body.removeChild(downloadLink);
+			});
+		}
+	});
+</script>
+
+<style>
+	@keyframes border-vibrate {
+		0%, 100% { 
+			border-color: rgb(34 197 94 / 0.5);
+			box-shadow: 0 1px 2px 0 rgb(34 197 94 / 0.3);
+		}
+		50% { 
+			border-color: rgb(34 197 94 / 0.8);
+			box-shadow: 0 0 8px 0 rgb(34 197 94 / 0.6), 0 0 12px 0 rgb(34 197 94 / 0.3);
+		}
+	}
+	
+	.border-vibrate {
+		animation: border-vibrate 2s ease-in-out infinite;
+	}
+</style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const copyEmailBtn = document.getElementById('copyEmailBtn');
+		const emailTooltip = document.getElementById('emailTooltip');
+		
+		if (copyEmailBtn && emailTooltip) {
+			copyEmailBtn.addEventListener('click', async function() {
+				try {
+					await navigator.clipboard.writeText('alexanderlopezdev@gmail.com');
+					
+					// Mostrar tooltip
+					emailTooltip.style.opacity = '1';
+					
+					// Ocultar tooltip después de 2 segundos
+					setTimeout(() => {
+						emailTooltip.style.opacity = '0';
+					}, 2000);
+				} catch (err) {
+					console.error('Error al copiar el correo: ', err);
+				}
+			});
+		}
+	});
+</script>
