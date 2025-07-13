@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import profileImage from '../assets/photo-profile.jpeg';
+import allremovebgImage from '../assets/www.allremovebg.com.png';
+import findpersonsImage from '../assets/www.find-persons.com.png';
 ---
 
 <Layout>
@@ -11,15 +13,6 @@ import profileImage from '../assets/photo-profile.jpeg';
 			<div class="max-w-4xl mx-auto text-center">
 				<!-- Profile Image and Badge Container -->
 				<div class="flex flex-col items-center mb-6">
-                        <!-- <img 
-                            src="/images/photo-profile.jpeg" 
-                            alt="Alexander López" 
-                            width="128"
-                            height="128"
-                            loading="eager"
-                            style="max-width: 128px; max-height: 128px;"
-                            class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white/20 shadow-2xl mb-4"
-                        > -->
                         <Image 
                             src={profileImage}
                             alt="Alexander López"
@@ -366,15 +359,15 @@ import profileImage from '../assets/photo-profile.jpeg';
 											</div>
 											<!-- Browser Content -->
 											<div class="h-full overflow-hidden flex items-center justify-center bg-gradient-to-br from-indigo-900/30 to-violet-900/30">
-												<img 
-													src="/images/www.find-persons.com.png" 
-													alt="Find-Persons.com screenshot" 
-                                                    width="128"
-                                                    height="128"
-                                                    loading="eager"
-                                                    style="max-width: 128px; max-height: 128px;"
-													class="w-full h-full object-cover object-top"
-												>
+                                                <Image 
+                                                    src={allremovebgImage}
+                                                    alt="Alexander López"
+                                                    width={338}
+                                                    height={329}
+                                                    quality={90}
+                                                    format="webp"
+                                                    class="w-full h-full object-cover object-top"
+                                                />
 											</div>
 										</div>
 										<!-- Floating effect -->
@@ -449,14 +442,15 @@ import profileImage from '../assets/photo-profile.jpeg';
 											</div>
 											<!-- Browser Content -->
 											<div class="h-full overflow-hidden">
-												<img 
-													src="/images/www.allremovebg.com.png" 
-													alt="Find-Persons.com screenshot" 
-                                                    width="128"
-                                                    height="128"
-                                                    loading="eager"
-													class="w-full h-full object-cover object-top"
-												>
+                                                <Image 
+                                                    src={allremovebgImage}
+                                                    alt="Alexander López"
+                                                    width={338}
+                                                    height={329}
+                                                    quality={90}
+                                                    format="webp"
+                                                    class="w-full h-full object-cover object-top"
+                                                />
 											</div>
 										</div>
 										<!-- Floating effect -->
