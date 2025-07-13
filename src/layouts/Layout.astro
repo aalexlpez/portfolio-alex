@@ -3,8 +3,11 @@ import Header from "../components/Header.astro";
 import "../styles/global.css";
 
 // Configuración de Google Analytics
-const GA_ID = "GA_MEASUREMENT_ID"; // Reemplaza con tu ID real
+// const GA_ID = "G-KJ00EXZ5S6"; // Reemplaza con tu ID real
+const GA_ID = import.meta.env.GA_ID;
 const isProduction = import.meta.env.PROD;
+console.log("isProduction:", isProduction);
+console.log("GA_ID:", GA_ID);
 ---
 
 <!doctype html>
