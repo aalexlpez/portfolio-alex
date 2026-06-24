@@ -1,0 +1,124 @@
+---
+// Lightweight interactive constellation rendered on a canvas.
+// Pauses when the tab is hidden and disables itself for reduced-motion users.
+---
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+<script>
+  const canvas = document.getElementById("bg-canvas") as HTMLCanvasElement | null;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (canvas && !reduceMotion) {
+    const ctx = canvas.getContext("2d");
+
+    if (ctx) {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let width = 0;
+      let height = 0;
+      let particles: { x: number; y: number; vx: number; vy: number }[] = [];
+      const pointer = { x: -9999, y: -9999 };
+      let running = true;
+      let rafId = 0;
+
+      const resize = () => {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        // Density scales with viewport, capped for performance.
+        const count = Math.min(Math.round((width * height) / 22000), 90);
+        particles = Array.from({ length: count }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.28,
+          vy: (Math.random() - 0.5) * 0.28,
+        }));
+      };
+
+      const draw = () => {
+        ctx.clearRect(0, 0, width, height);
+
+        for (const p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          // Gentle attraction toward the cursor.
+          const dxp = pointer.x - p.x;
+          const dyp = pointer.y - p.y;
+          const distp = Math.hypot(dxp, dyp);
+          if (distp < 160) {
+            p.x += (dxp / distp) * 0.35;
+            p.y += (dyp / distp) * 0.35;
+          }
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(120, 220, 240, 0.55)";
+          ctx.fill();
+        }
+
+        // Connecting lines between nearby particles.
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const a = particles[i];
+            const b = particles[j];
+            const dist = Math.hypot(a.x - b.x, a.y - b.y);
+            if (dist < 128) {
+              const alpha = (1 - dist / 128) * 0.28;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(90, 200, 230, ${alpha})`;
+              ctx.lineWidth = 0.6;
+              ctx.stroke();
+            }
+          }
+        }
+
+        if (running) {
+          rafId = requestAnimationFrame(draw);
+        }
+      };
+
+      const start = () => {
+        if (!running) {
+          running = true;
+          rafId = requestAnimationFrame(draw);
+        }
+      };
+
+      const stop = () => {
+        running = false;
+        cancelAnimationFrame(rafId);
+      };
+
+      window.addEventListener("pointermove", (event) => {
+        pointer.x = event.clientX;
+        pointer.y = event.clientY;
+      });
+      window.addEventListener("pointerleave", () => {
+        pointer.x = -9999;
+        pointer.y = -9999;
+      });
+      window.addEventListener("resize", resize, { passive: true });
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          stop();
+        } else {
+          start();
+        }
+      });
+
+      resize();
+      draw();
+    }
+  }
+</script>

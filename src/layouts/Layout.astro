@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import BackgroundFX from "../components/BackgroundFX.astro";
 import { portfolio } from "../data/portfolio";
 import "../styles/global.css";
 
@@ -92,12 +93,55 @@ const personSchema = {
     )}
   </head>
   <body>
+    <div class="scroll-progress" id="scroll-progress"></div>
     <div class="site-shell">
+      <BackgroundFX />
       <div class="page-aura page-aura-left"></div>
       <div class="page-aura page-aura-right"></div>
+      <div class="page-aura page-aura-warm"></div>
       <div class="page-grid"></div>
+      <div class="page-noise"></div>
       <Header />
       <slot />
     </div>
+
+    <script>
+      // Global, low-cost scroll + parallax effects shared across pages.
+      const progress = document.getElementById("scroll-progress");
+      const auras = Array.from(document.querySelectorAll<HTMLElement>(".page-aura"));
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let ticking = false;
+
+      const onScroll = () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = docHeight > 0 ? scrollTop / docHeight : 0;
+
+        if (progress) {
+          progress.style.transform = `scaleX(${ratio})`;
+        }
+
+        if (!reduceMotion) {
+          auras.forEach((aura, index) => {
+            const depth = (index + 1) * 18;
+            aura.style.translate = `0 ${scrollTop / depth}px`;
+          });
+        }
+
+        ticking = false;
+      };
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            window.requestAnimationFrame(onScroll);
+            ticking = true;
+          }
+        },
+        { passive: true },
+      );
+      onScroll();
+    </script>
   </body>
 </html>

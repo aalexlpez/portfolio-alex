@@ -10,158 +10,199 @@ const projectImages = {
   findPersons: findPersonsImage,
   allRemoveBg: allRemoveBgImage,
 } as const;
+
+// Split the headline into words for the staggered blur-in reveal.
+// Words after the highlight marker get the animated gradient treatment.
+const headlineWords = portfolio.hero.headline.split(" ");
+const highlightFrom = headlineWords.findIndex((word) => word.startsWith("convierten"));
+
+// Flatten the stack into a single list for the continuous tech marquee.
+const techList = portfolio.capabilityGroups.flatMap((group) => group.items);
+const marqueeTech = [...techList, ...techList];
 ---
 
 <Layout>
   <main id="top" class="section-shell pb-28 md:pb-16">
-    <section class="px-4 pb-16 pt-28 md:px-6 md:pb-24 md:pt-36">
-      <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
-        <div class="space-y-8" data-reveal>
+    <section class="px-4 pb-12 pt-28 md:px-6 md:pb-16 md:pt-36">
+      <div class="mx-auto max-w-6xl space-y-10" data-reveal>
+        <div class="flex flex-wrap items-center justify-between gap-4">
           <span class="eyebrow">{portfolio.hero.eyebrow}</span>
-
-          <div class="space-y-6">
-            <p class="font-mono text-sm uppercase tracking-[0.22em] text-cyan-200/75">
-              {portfolio.role} - {portfolio.location}
-            </p>
-            <h1 class="section-title max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-7xl">
-              {portfolio.hero.headline}
-            </h1>
-            <p class="section-copy max-w-3xl text-base leading-8 sm:text-lg">
-              {portfolio.hero.summary}
-            </p>
-          </div>
-
-          <div class="flex flex-wrap gap-3">
-            <a
-              href="#contact"
-              data-scroll-link
-              class="button-primary px-6 py-3 text-sm font-semibold sm:px-7 sm:text-base"
-            >
-              {portfolio.hero.primaryCta}
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.8"
-                  d="M4 6h16M4 6l8 6 8-6M4 6v12h16V6"
-                ></path>
-              </svg>
-            </a>
-            <a
-              href={portfolio.cvPath}
-              download
-              class="button-secondary px-6 py-3 text-sm font-semibold sm:px-7 sm:text-base"
-            >
-              {portfolio.hero.secondaryCta}
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.8"
-                  d="M12 5v9m0 0 4-4m-4 4-4-4m-3 8h14"
-                ></path>
-              </svg>
-            </a>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-3 text-sm text-white/72">
-            <a
-              href={portfolio.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="rounded-full border border-white/10 bg-white/4 px-4 py-2 transition duration-300 hover:border-white/20 hover:bg-white/8"
-            >
-              Ver LinkedIn
-            </a>
-            <button
-              type="button"
-              data-copy-text={portfolio.email}
-              class="relative rounded-full border border-white/10 bg-white/4 px-4 py-2 transition duration-300 hover:border-white/20 hover:bg-white/8"
-            >
-              Copiar email
-              <span
-                data-copy-feedback
-                class="copy-feedback pointer-events-none absolute left-1/2 top-[-2.5rem] -translate-x-1/2 rounded-full border border-emerald-300/20 bg-emerald-400/12 px-3 py-1 text-xs text-emerald-100 opacity-0"
-              >
-                Email copiado
-              </span>
-            </button>
-          </div>
+          <p class="font-mono text-xs uppercase tracking-[0.22em] text-white/45">
+            {portfolio.role} — {portfolio.location}
+          </p>
         </div>
 
-        <aside
-          class="section-surface relative overflow-hidden rounded-[2rem] p-6 md:p-8"
-          data-reveal
-          style="--reveal-delay: 120ms;"
-        >
-          <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-cyan-300/8 to-transparent"></div>
-          <div class="relative space-y-6">
-            <div class="flex items-center gap-4">
-              <Picture
-                src={profileImage}
-                alt={portfolio.name}
-                widths={[128, 192, 256]}
-                sizes="(max-width: 768px) 96px, 144px"
-                formats={["webp", "avif"]}
-                quality={92}
-                class="h-20 w-20 rounded-[1.4rem] border border-white/12 object-cover shadow-[0_18px_40px_rgba(3,8,20,0.35)] md:h-28 md:w-28"
-              />
-              <div class="space-y-2">
-                <p class="text-2xl font-semibold tracking-[-0.04em] text-white">{portfolio.name}</p>
-                <p class="text-sm text-white/72">{portfolio.roleSecondary}</p>
-                <div class="inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1 font-mono text-xs text-emerald-100">
-                  <span class="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(74,222,128,0.7)]"></span>
-                  {portfolio.availability}
-                </div>
-              </div>
+        <h1 class="hero-display section-title text-white">
+          {
+            headlineWords.map((word, index) => (
+              <span
+                class:list={[
+                  "reveal-word",
+                  highlightFrom >= 0 && index >= highlightFrom && "text-gradient",
+                ]}
+                style={`--word-index: ${index};`}
+              >
+                {word}
+              </span>
+            ))
+          }
+        </h1>
+
+        <div class="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+          <p class="section-copy max-w-2xl text-base leading-8 sm:text-lg">
+            {portfolio.hero.summary}
+          </p>
+
+          <div class="space-y-5">
+            <div class="flex flex-wrap gap-3">
+              <a
+                href="#contact"
+                data-scroll-link
+                data-magnetic
+                class="button-primary px-6 py-3 text-sm font-semibold sm:px-7 sm:text-base"
+              >
+                {portfolio.hero.primaryCta}
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    d="M4 6h16M4 6l8 6 8-6M4 6v12h16V6"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href={portfolio.cvPath}
+                download
+                class="button-secondary px-6 py-3 text-sm font-semibold sm:px-7 sm:text-base"
+              >
+                {portfolio.hero.secondaryCta}
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    d="M12 5v9m0 0 4-4m-4 4-4-4m-3 8h14"
+                  ></path>
+                </svg>
+              </a>
             </div>
 
-            <div class="grid gap-3 sm:grid-cols-2">
-              <div class="rounded-[1.35rem] border border-white/8 bg-white/[0.03] p-4">
-                <p class="font-mono text-xs uppercase tracking-[0.18em] text-white/42">Ubicación</p>
-                <p class="mt-3 text-sm text-white/82">{portfolio.location}</p>
-              </div>
-              <div class="rounded-[1.35rem] border border-white/8 bg-white/[0.03] p-4">
-                <p class="font-mono text-xs uppercase tracking-[0.18em] text-white/42">Disponibilidad</p>
-                <p class="mt-3 text-sm text-white/82">{portfolio.workModel}</p>
-              </div>
-              <div class="rounded-[1.35rem] border border-white/8 bg-white/[0.03] p-4 sm:col-span-2">
-                <p class="font-mono text-xs uppercase tracking-[0.18em] text-white/42">Señal de confianza</p>
-                <p class="mt-3 text-sm leading-7 text-white/82">
-                  Perfil acostumbrado a producto digital, entornos corporativos y soporte a negocio.
-                </p>
-              </div>
-            </div>
-
-            <div class="rounded-[1.5rem] border border-white/8 bg-[linear-gradient(135deg,rgba(34,211,238,0.08),rgba(139,92,246,0.08))] p-5">
-              <p class="font-mono text-xs uppercase tracking-[0.18em] text-white/44">Qué te llevas si me contactas</p>
-              <ul class="mt-4 space-y-3 text-sm leading-7 text-white/82">
-                <li>Frontend moderno con foco en claridad, rendimiento y conversión.</li>
-                <li>Capacidad para integrarme con backend, datos y despliegue.</li>
-                <li>Comunicación técnica cercana a negocio y continuidad en producción.</li>
-              </ul>
+            <div class="flex flex-wrap items-center gap-3 text-sm text-white/72">
+              <a
+                href={portfolio.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-full border border-white/10 bg-white/4 px-4 py-2 transition duration-300 hover:border-white/20 hover:bg-white/8"
+              >
+                Ver LinkedIn
+              </a>
+              <button
+                type="button"
+                data-copy-text={portfolio.email}
+                class="relative rounded-full border border-white/10 bg-white/4 px-4 py-2 transition duration-300 hover:border-white/20 hover:bg-white/8"
+              >
+                Copiar email
+                <span
+                  data-copy-feedback
+                  class="copy-feedback pointer-events-none absolute left-1/2 top-[-2.5rem] -translate-x-1/2 rounded-full border border-emerald-300/20 bg-emerald-400/12 px-3 py-1 text-xs text-emerald-100 opacity-0"
+                >
+                  Email copiado
+                </span>
+              </button>
             </div>
           </div>
-        </aside>
+        </div>
       </div>
     </section>
 
-    <section id="value" class="px-4 py-8 md:px-6 md:py-12">
-      <div class="mx-auto max-w-6xl">
-        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+    <section id="value" class="px-4 py-8 md:px-6 md:py-10">
+      <div class="mx-auto max-w-6xl space-y-4">
+        <div class="grid gap-4 lg:grid-cols-12">
+          <article
+            class="bento-tile relative overflow-hidden p-6 md:p-7 lg:col-span-5"
+            data-reveal
+            data-spotlight
+            data-tilt
+          >
+            <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-cyan-300/10 to-transparent"></div>
+            <div class="relative flex h-full flex-col gap-5">
+              <div class="flex items-center gap-4">
+                <Picture
+                  src={profileImage}
+                  alt={portfolio.name}
+                  widths={[128, 192, 256]}
+                  sizes="(max-width: 768px) 96px, 144px"
+                  formats={["webp", "avif"]}
+                  quality={92}
+                  class="h-20 w-20 rounded-[1.4rem] border border-white/12 object-cover shadow-[0_18px_40px_rgba(3,8,20,0.35)] md:h-24 md:w-24"
+                />
+                <div class="space-y-2">
+                  <p class="text-2xl font-semibold tracking-[-0.04em] text-white">{portfolio.name}</p>
+                  <p class="text-sm text-white/72">{portfolio.roleSecondary}</p>
+                  <div class="inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1 font-mono text-xs text-emerald-100">
+                    <span class="status-dot"></span>
+                    {portfolio.availability}
+                  </div>
+                </div>
+              </div>
+              <div class="mt-auto grid gap-3 sm:grid-cols-2">
+                <div class="rounded-[1.2rem] border border-white/8 bg-white/[0.03] p-4">
+                  <p class="font-mono text-xs uppercase tracking-[0.18em] text-white/42">Ubicación</p>
+                  <p class="mt-2 text-sm text-white/82">{portfolio.location}</p>
+                </div>
+                <div class="rounded-[1.2rem] border border-white/8 bg-white/[0.03] p-4">
+                  <p class="font-mono text-xs uppercase tracking-[0.18em] text-white/42">Disponibilidad</p>
+                  <p class="mt-2 text-sm text-white/82">{portfolio.workModel}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="bento-tile relative overflow-hidden p-6 md:p-7 lg:col-span-7"
+            data-reveal
+            data-spotlight
+            data-tilt
+            style="--reveal-delay: 90ms;"
+          >
+            <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(34,211,238,0.06),rgba(255,125,92,0.07))]"></div>
+            <div class="relative flex h-full flex-col">
+              <p class="font-mono text-xs uppercase tracking-[0.18em] text-white/44">Qué te llevas si me contactas</p>
+              <ul class="mt-5 grid flex-1 gap-4 sm:grid-cols-3">
+                <li class="rounded-[1.2rem] border border-white/8 bg-white/[0.02] p-4 text-sm leading-7 text-white/82">
+                  Frontend moderno con foco en claridad, rendimiento y conversión.
+                </li>
+                <li class="rounded-[1.2rem] border border-white/8 bg-white/[0.02] p-4 text-sm leading-7 text-white/82">
+                  Capacidad para integrarme con backend, datos y despliegue.
+                </li>
+                <li class="rounded-[1.2rem] border border-white/8 bg-white/[0.02] p-4 text-sm leading-7 text-white/82">
+                  Comunicación técnica cercana a negocio y continuidad en producción.
+                </li>
+              </ul>
+            </div>
+          </article>
+
           {
             portfolio.metrics.map((metric, index) => (
               <article
-                class="section-surface rounded-[1.75rem] p-5"
+                class="bento-tile p-5 lg:col-span-3"
                 data-reveal
-                style={`--reveal-delay: ${index * 80}ms;`}
+                data-spotlight
+                style={`--reveal-delay: ${index * 70}ms;`}
               >
                 <p class="font-mono text-xs uppercase tracking-[0.18em] text-white/42">Señal clave</p>
-                <p class="mt-5 text-2xl font-semibold tracking-[-0.04em] text-white">{metric.value}</p>
-                <p class="mt-3 text-sm leading-7 text-white/72">{metric.label}</p>
+                <p class="mt-4 text-xl font-semibold tracking-[-0.04em] text-white">{metric.value}</p>
+                <p class="mt-2 text-sm leading-7 text-white/72">{metric.label}</p>
               </article>
             ))
           }
+        </div>
+
+        <div class="marquee section-surface rounded-full py-3" data-reveal aria-hidden="true">
+          <div class="marquee-track px-2">
+            {marqueeTech.map((tech) => <span class="tech-chip">{tech}</span>)}
+          </div>
         </div>
       </div>
     </section>
@@ -169,7 +210,7 @@ const projectImages = {
     <section class="px-4 py-18 md:px-6 md:py-24">
       <div class="mx-auto max-w-6xl space-y-10">
         <div class="max-w-3xl space-y-4" data-reveal>
-          <p class="section-kicker">Enfoque profesional</p>
+          <p class="section-index" data-index="01">Enfoque profesional</p>
           <h2 class="section-title text-3xl font-semibold sm:text-4xl">Un perfil técnico que ayuda a producto, negocio y entrega.</h2>
           <p class="section-copy text-base leading-8 sm:text-lg">
             Mi propuesta no es sólo saber usar un framework. Aporto criterio para construir interfaces que se entienden, se sienten profesionales y pueden sostenerse con backend, datos y despliegues reales.
@@ -183,6 +224,7 @@ const projectImages = {
                 <article
                   class="section-surface rounded-[1.8rem] p-6"
                   data-reveal
+                  data-spotlight
                   style={`--reveal-delay: ${index * 90}ms;`}
                 >
                   <p class="font-mono text-xs uppercase tracking-[0.18em] text-cyan-200/76">{group.title}</p>
@@ -207,6 +249,7 @@ const projectImages = {
                 <article
                   class="section-surface rounded-[1.8rem] p-6"
                   data-reveal
+                  data-spotlight
                   style={`--reveal-delay: ${120 + index * 90}ms;`}
                 >
                   <p class="text-lg font-semibold tracking-[-0.03em] text-white">{item.title}</p>
@@ -240,7 +283,7 @@ const projectImages = {
     <section id="experience" class="px-4 py-18 md:px-6 md:py-24">
       <div class="mx-auto max-w-6xl space-y-10">
         <div class="max-w-3xl space-y-4" data-reveal>
-          <p class="section-kicker">Experiencia</p>
+          <p class="section-index" data-index="02">Experiencia</p>
           <h2 class="section-title text-3xl font-semibold sm:text-4xl">Experiencia alineada con producto web, operaciones y continuidad.</h2>
           <p class="section-copy text-base leading-8 sm:text-lg">
             He trabajado en contextos distintos, pero con algo en común: soluciones que debían funcionar bien, integrarse con otros equipos y sostenerse en entornos reales.
@@ -253,6 +296,7 @@ const projectImages = {
               <article
                 class="section-surface rounded-[2rem] p-6 md:p-8"
                 data-reveal
+                data-spotlight
                 style={`--reveal-delay: ${index * 90}ms;`}
               >
                 <div class="grid gap-6 lg:grid-cols-[0.34fr_1fr]">
@@ -288,7 +332,7 @@ const projectImages = {
     <section id="projects" class="px-4 py-18 md:px-6 md:py-24">
       <div class="mx-auto max-w-6xl space-y-10">
         <div class="max-w-3xl space-y-4" data-reveal>
-          <p class="section-kicker">Proyectos destacados</p>
+          <p class="section-index" data-index="03">Proyectos destacados</p>
           <h2 class="section-title text-3xl font-semibold sm:text-4xl">Casos que muestran producto, implementación y criterio técnico.</h2>
           <p class="section-copy text-base leading-8 sm:text-lg">
             Seleccioné proyectos que ayudan a entender cómo trabajo cuando hay que conectar diseño, experiencia, tecnología y resultados.
@@ -301,6 +345,8 @@ const projectImages = {
               <article
                 class="section-surface overflow-hidden rounded-[2.2rem]"
                 data-reveal
+                data-spotlight
+                data-tilt
                 style={`--reveal-delay: ${index * 120}ms;`}
               >
                 <div class="grid lg:grid-cols-[1.05fr_0.95fr]">
@@ -356,6 +402,7 @@ const projectImages = {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        data-magnetic
                         class="button-primary px-5 py-3 text-sm font-semibold"
                       >
                         Ver proyecto
@@ -404,10 +451,10 @@ const projectImages = {
 
     <section id="contact" class="px-4 pb-20 pt-18 md:px-6 md:pb-24 md:pt-24">
       <div class="mx-auto max-w-6xl">
-        <article class="section-surface overflow-hidden rounded-[2.4rem] p-6 md:p-8 lg:p-10" data-reveal>
+        <article class="section-surface overflow-hidden rounded-[2.4rem] p-6 md:p-8 lg:p-10" data-reveal data-spotlight>
           <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <div class="space-y-5">
-              <p class="section-kicker">Contacto</p>
+              <p class="section-index" data-index="04">Contacto</p>
               <h2 class="section-title text-3xl font-semibold sm:text-4xl">Si encaja lo que buscas, hablemos.</h2>
               <p class="section-copy text-base leading-8 sm:text-lg">
                 Estoy abierto a oportunidades donde pueda aportar valor en frontend de producto, evolución de aplicaciones web o perfiles híbridos con respaldo fullstack.
@@ -648,5 +695,50 @@ const projectImages = {
         window.open(gmailComposeUrl, "_blank", "noopener,noreferrer");
       });
     });
+
+    // ------------------------------------------------------------ pointer FX
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const finePointer = window.matchMedia("(pointer: fine)").matches;
+
+    // Cursor spotlight: feed pointer position into CSS custom props.
+    document.querySelectorAll("[data-spotlight]").forEach((el) => {
+      el.addEventListener("pointermove", (event) => {
+        const rect = el.getBoundingClientRect();
+        const mx = ((event.clientX - rect.left) / rect.width) * 100;
+        const my = ((event.clientY - rect.top) / rect.height) * 100;
+        el.style.setProperty("--mx", `${mx}%`);
+        el.style.setProperty("--my", `${my}%`);
+      });
+    });
+
+    if (!reduceMotion && finePointer) {
+      // 3D tilt on hover.
+      const MAX_TILT = 5;
+      document.querySelectorAll("[data-tilt]").forEach((el) => {
+        el.addEventListener("pointermove", (event) => {
+          const rect = el.getBoundingClientRect();
+          const px = (event.clientX - rect.left) / rect.width - 0.5;
+          const py = (event.clientY - rect.top) / rect.height - 0.5;
+          el.style.transform = `perspective(900px) rotateX(${(-py * MAX_TILT).toFixed(2)}deg) rotateY(${(px * MAX_TILT).toFixed(2)}deg)`;
+        });
+        el.addEventListener("pointerleave", () => {
+          el.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
+        });
+      });
+
+      // Magnetic buttons: ease toward the cursor.
+      const STRENGTH = 0.32;
+      document.querySelectorAll("[data-magnetic]").forEach((el) => {
+        el.addEventListener("pointermove", (event) => {
+          const rect = el.getBoundingClientRect();
+          const mx = event.clientX - rect.left - rect.width / 2;
+          const my = event.clientY - rect.top - rect.height / 2;
+          el.style.transform = `translate(${(mx * STRENGTH).toFixed(2)}px, ${(my * STRENGTH).toFixed(2)}px)`;
+        });
+        el.addEventListener("pointerleave", () => {
+          el.style.transform = "translate(0, 0)";
+        });
+      });
+    }
   });
 </script>
